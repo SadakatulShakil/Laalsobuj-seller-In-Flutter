@@ -72,10 +72,15 @@ class SignInWidgetState extends State<SignInWidget> {
                       textInputType: TextInputType.emailAddress,
                       controller: _emailController,
                     )),
+                const SizedBox(height: 5),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0),
+                  child: Text('NOTE: please enter phone number with country code. ex: 8801787878787',
+                    style: robotoWarning,),
+                ),
+
                 const SizedBox(height: Dimensions.paddingSizeSmall),
-
-
-
                 Container(margin: const EdgeInsets.only(left: Dimensions.paddingSizeLarge, 
                     right: Dimensions.paddingSizeLarge, bottom: Dimensions.paddingSizeDefault),
                     child: CustomTextField(
@@ -148,9 +153,11 @@ class SignInWidgetState extends State<SignInWidget> {
                       String password = _passwordController!.text.trim();
                       if (email.isEmpty) {
                         showCustomSnackBar(getTranslated('enter_email_address', context), context);
-                      }else if (EmailChecker.isNotValid(email)) {
-                        showCustomSnackBar(getTranslated('enter_valid_email', context), context);
-                      }else if (password.isEmpty) {
+                      }
+                      // else if (EmailChecker.isNotValid(email)) {
+                      //   showCustomSnackBar(getTranslated('enter_valid_email', context), context);
+                      // }
+                      else if (password.isEmpty) {
                         showCustomSnackBar(getTranslated('enter_password', context), context);
                       }else if (password.length < 6) {
                         showCustomSnackBar(getTranslated('password_should_be', context), context);

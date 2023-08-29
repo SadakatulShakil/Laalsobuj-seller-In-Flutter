@@ -170,6 +170,8 @@ class AuthRepo {
       'confirm_password': registerModel.confirmPassword!,
       'shop_name': registerModel.shopName!,
       'shop_address': registerModel.shopAddress!,
+      'district_id': registerModel.district!,
+      'upazila_id': registerModel.upazila!,
     });
 
     request.fields.addAll(fields);

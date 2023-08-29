@@ -33,6 +33,13 @@ const robotoHintRegular = TextStyle(
     fontSize: Dimensions.fontSizeSmall,
     color: Colors.grey
 );
+
+const robotoWarning = TextStyle(
+    fontFamily: 'Ubuntu',
+    fontWeight: FontWeight.w400,
+    fontSize: Dimensions.fontSizeSmall,
+    color: Colors.red
+);
 const robotoRegular = TextStyle(
   fontFamily: 'Ubuntu',
   fontWeight: FontWeight.w400,
