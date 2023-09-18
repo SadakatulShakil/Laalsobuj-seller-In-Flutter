@@ -1,4 +1,4 @@
-package com.example.sixvalley_vendor_app
+package com.comjagatltd.laalsobuj.seller_app
 
 import io.flutter.embedding.android.FlutterActivity
 

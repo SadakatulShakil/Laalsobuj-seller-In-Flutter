@@ -47,8 +47,8 @@ class MenuBottomSheet extends StatelessWidget {
       CustomBottomSheet(image: Images.reviewIcon, title: getTranslated('reviews', context),
           onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> const ProductReview()))),
 
-      CustomBottomSheet(image: Images.couponIcon, title: getTranslated('coupons', context),
-          onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> const CouponListScreen()))),
+      // CustomBottomSheet(image: Images.couponIcon, title: getTranslated('coupons', context),
+      //     onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> const CouponListScreen()))),
 
       if(Provider.of<SplashProvider>(context, listen: false).configModel!.shippingMethod == 'sellerwise_shipping')
       CustomBottomSheet(image: Images.deliveryManIcon, title: getTranslated('deliveryman', context),

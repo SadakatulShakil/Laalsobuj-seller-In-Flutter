@@ -160,7 +160,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               // CustomText(title: subCategory, isLocale: false,),
                               CustomText(title:  widget.productModel!.productType),
                               widget.productModel!.productType == 'physical'?
-                              CustomText(amount: widget.productModel!.shippingCost, amountValue: true):const SizedBox.shrink(),
+                              CustomText(amount: 0, amountValue: true):const SizedBox.shrink(),
 
                          ])),
                        ],)

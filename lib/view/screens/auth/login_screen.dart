@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sixvalley_vendor_app/helper/email_checker.dart';
@@ -16,6 +17,8 @@ import 'package:sixvalley_vendor_app/view/screens/dashboard/dashboard_screen.dar
 import 'package:sixvalley_vendor_app/view/screens/forgetPassword/forget_password_screen.dart';
 import 'package:sixvalley_vendor_app/view/screens/more/html_view_screen.dart';
 
+import '../forgetPassword/widget/code_picker_widget.dart';
+
 class SignInWidget extends StatefulWidget {
   const SignInWidget({Key? key}) : super(key: key);
 
@@ -29,10 +32,15 @@ class SignInWidgetState extends State<SignInWidget> {
   TextEditingController? _emailController;
   TextEditingController? _passwordController;
   GlobalKey<FormState>? _formKeyLogin;
+  String? _countryDialCode = "+880";
+  String? _phoneNumber;
 
   @override
   void initState() {
     super.initState();
+    Provider.of<SplashProvider>(context,listen: false).configModel;
+    _countryDialCode = CountryCode.fromCountryCode(Provider.of<SplashProvider>(context, listen: false).configModel!.countryCode!).dialCode;
+    print("jjjjjjjjjjjjjjj: "+_countryDialCode.toString());
     _formKeyLogin = GlobalKey<FormState>();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
@@ -61,24 +69,45 @@ class SignInWidgetState extends State<SignInWidget> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(margin: const EdgeInsets.only(left: Dimensions.paddingSizeLarge, right: Dimensions.paddingSizeLarge, 
+                Container(margin: const EdgeInsets.only(left: Dimensions.paddingSizeLarge, right: Dimensions.paddingSizeLarge,
                         bottom: Dimensions.paddingSizeSmall),
-                    child: CustomTextField(
-                      border: true,
-                      prefixIconImage: Images.emailIcon,
-                      hintText: getTranslated('enter_email_address', context),
-                      focusNode: _emailFocus,
-                      nextNode: _passwordFocus,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _emailController,
-                    )),
-                const SizedBox(height: 5),
+                    child: Row(
+                      children: [
+                        CodePickerWidget(
+                          onChanged: (CountryCode countryCode) {
+                            _countryDialCode = countryCode.dialCode;
+                          },
+                          initialSelection: _countryDialCode,
+                          favorite: [_countryDialCode!],
+                          showDropDownButton: true,
+                          padding: EdgeInsets.zero,
+                          showFlagMain: true,
+                          textStyle: TextStyle(color: Theme.of(context).textTheme.displayLarge!.color),
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 18.0),
-                  child: Text('NOTE: please enter phone number with country code. ex: 8801787878787',
-                    style: robotoWarning,),
-                ),
+                        ),
+
+                        Expanded(child: CustomTextField(
+                          border: true,
+                          hintText: getTranslated('MOBILE_HINT', context),
+                          controller: _emailController,
+                          focusNode: _emailFocus,
+                          nextNode: _passwordFocus,
+                          isPhoneNumber: true,
+                          textInputAction: TextInputAction.next,
+                          textInputType: TextInputType.phone,
+
+                        )),
+                      ],
+                      // child: CustomTextField(
+                      //   border: true,
+                      //   prefixIconImage: Images.emailIcon,
+                      //   hintText: getTranslated('enter_email_address', context),
+                      //   focusNode: _emailFocus,
+                      //   nextNode: _passwordFocus,
+                      //   textInputType: TextInputType.emailAddress,
+                      //   controller: _emailController,
+                      // ),
+                    )),
 
                 const SizedBox(height: Dimensions.paddingSizeSmall),
                 Container(margin: const EdgeInsets.only(left: Dimensions.paddingSizeLarge, 
@@ -149,7 +178,12 @@ class SignInWidgetState extends State<SignInWidget> {
                     backgroundColor: Theme.of(context).primaryColor,
                     btnTxt: getTranslated('login', context),
                     onTap: () async {
-                      String email = _emailController!.text.trim();
+                      if(_emailController!.text.trim().startsWith('0')){
+                        _phoneNumber = _emailController!.text.trim().substring(1);
+                      }else{
+                        _phoneNumber = _emailController!.text.trim();
+                      }
+                      String email = _countryDialCode!.substring(1)+_phoneNumber!;
                       String password = _passwordController!.text.trim();
                       if (email.isEmpty) {
                         showCustomSnackBar(getTranslated('enter_email_address', context), context);
@@ -161,7 +195,9 @@ class SignInWidgetState extends State<SignInWidget> {
                         showCustomSnackBar(getTranslated('enter_password', context), context);
                       }else if (password.length < 6) {
                         showCustomSnackBar(getTranslated('password_should_be', context), context);
-                      }else {authProvider.login(context, emailAddress: email, password: password).then((status) async {
+                      }else {
+                        print("check number: "+email);
+                        authProvider.login(context, emailAddress: email, password: password).then((status) async {
                           if (status.response!.statusCode == 200) {
                             if (authProvider.isActiveRememberMe) {
                               authProvider.saveUserNumberAndPassword(email, password);

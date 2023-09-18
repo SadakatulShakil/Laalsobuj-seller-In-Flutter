@@ -60,6 +60,7 @@
   "number_hint": "1234567890",
   "password": "Password",
   "password_hint": "••••••••••",
+  "MOBILE_HINT": "Enter mobile",
   "remember_me": "Remember me",
   "first_name": "First Name",
   "last_name": "Last Name",

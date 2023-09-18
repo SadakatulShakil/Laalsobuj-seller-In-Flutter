@@ -501,62 +501,62 @@ class AddProductNextScreenState extends State<AddProductNextScreen> {
                     resProvider.productTypeIndex == 0?
                     Column(children: [
                       Row(mainAxisAlignment:MainAxisAlignment.center,children: [
-                        Text(getTranslated('shipping',context)!,
-                            style: robotoBold.copyWith(color: ColorResources.getHeadTextColor(context),
-                                fontSize: Dimensions.fontSizeExtraLarge)),
+                        // Text(getTranslated('shipping',context)!,
+                        //     style: robotoBold.copyWith(color: ColorResources.getHeadTextColor(context),
+                        //         fontSize: Dimensions.fontSizeExtraLarge)),
                       ],),
 
                       const SizedBox(height: Dimensions.paddingSizeSmall,),
 
-                      Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(getTranslated('shipping_cost', context)!,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault),
-                          ),
-                          const SizedBox(height: Dimensions.paddingSizeSmall),
-                          CustomTextField(
-                            border: true,
-                            controller: _shippingCostController,
-                            focusNode: _shippingCostNode,
-                            nextNode: _totalQuantityNode,
-                            textInputAction: TextInputAction.next,
-                            textInputType: TextInputType.number,
-                            isAmount: true,
-                            // isAmount: true,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: Dimensions.paddingSizeDefault,),
-
-                      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        Expanded(
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(getTranslated('shipping_cost_multiply', context)!,
-                                style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault),
-                              ),
-                              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                              Text(getTranslated('shipping_cost_multiply_by_item', context)!,
-                                style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall,
-                                    color: Theme.of(context).hintColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                        FlutterSwitch(width: 60.0, height: 30.0, toggleSize: 30.0,
-                          value: resProvider.isMultiply,
-                          borderRadius: 20.0,
-                          activeColor: Theme.of(context).primaryColor,
-                          padding: 1.0,
-                          onToggle:(bool isActive) =>resProvider.toggleMultiply(context),
-                        ),
-
-                      ]),
-                      const SizedBox(height: Dimensions.iconSizeLarge),
+                      // Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: [
+                      //     Text(getTranslated('shipping_cost', context)!,
+                      //       style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault),
+                      //     ),
+                      //     const SizedBox(height: Dimensions.paddingSizeSmall),
+                      //     CustomTextField(
+                      //       border: true,
+                      //       controller: _shippingCostController,
+                      //       focusNode: _shippingCostNode,
+                      //       nextNode: _totalQuantityNode,
+                      //       textInputAction: TextInputAction.next,
+                      //       textInputType: TextInputType.number,
+                      //       isAmount: true,
+                      //       // isAmount: true,
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(height: Dimensions.paddingSizeDefault,),
+                      //
+                      // Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                      //   Expanded(
+                      //     child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      //       mainAxisAlignment: MainAxisAlignment.start,
+                      //       children: [
+                      //         Text(getTranslated('shipping_cost_multiply', context)!,
+                      //           style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault),
+                      //         ),
+                      //         const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                      //
+                      //         Text(getTranslated('shipping_cost_multiply_by_item', context)!,
+                      //           style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall,
+                      //               color: Theme.of(context).hintColor),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      //   const SizedBox(height: Dimensions.paddingSizeSmall),
+                      //
+                      //   // FlutterSwitch(width: 60.0, height: 30.0, toggleSize: 30.0,
+                      //   //   value: resProvider.isMultiply,
+                      //   //   borderRadius: 20.0,
+                      //   //   activeColor: Theme.of(context).primaryColor,
+                      //   //   padding: 1.0,
+                      //   //   onToggle:(bool isActive) =>resProvider.toggleMultiply(context),
+                      //   // ),
+                      //
+                      // ]),
+                      // const SizedBox(height: Dimensions.iconSizeLarge),
                     ],):const SizedBox(),
 
                   ],):
