@@ -306,6 +306,8 @@ class AuthProvider with ChangeNotifier {
   String? get countryDialCode => _countryDialCode;
   String? get districtId => _districtId;
   String? get upazilaId => _upazilaId;
+  bool isDistictSelected = false;
+  bool isUpazilaSelected = false;
 
   void setCountryDialCode (String? setValue){
     _countryDialCode = setValue;
@@ -313,10 +315,12 @@ class AuthProvider with ChangeNotifier {
   }
   void setDistrictId (String? setValue){
     _districtId = setValue;
+    notifyListeners();
   }
 
   void setUpazilaId (String? setValue){
     _upazilaId = setValue;
+    notifyListeners();
   }
 
 }

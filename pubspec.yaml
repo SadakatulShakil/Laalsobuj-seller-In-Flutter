@@ -1,7 +1,7 @@
 name: sixvalley_vendor_app
 description: A new Flutter application.
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+4
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

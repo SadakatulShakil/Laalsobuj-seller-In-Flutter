@@ -123,13 +123,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> with TickerProv
                       showCustomSnackBar(getTranslated('first_name_is_required', context), context);
                     }else if(authProvider.lastNameController.text.trim().isEmpty){
                       showCustomSnackBar(getTranslated('last_name_is_required', context), context);
+                    }else if(authProvider.isDistictSelected == false){
+                      showCustomSnackBar(getTranslated('district is required', context), context);
+                    }else if(authProvider.isUpazilaSelected == false){
+                      showCustomSnackBar(getTranslated('upazila is required', context), context);
                     }
                     // else if(authProvider.emailController.text.trim().isEmpty){
                     //   showCustomSnackBar(getTranslated('email_is_required', context), context);
                     // }
-                    else if (EmailChecker.isNotValid(authProvider.emailController.text.trim())) {
-                      showCustomSnackBar(getTranslated('email_is_ot_valid', context), context);
-                    }else if(authProvider.phoneController.text.trim().isEmpty){
+                    // else if (EmailChecker.isNotValid(authProvider.emailController.text.trim())) {
+                    //   showCustomSnackBar(getTranslated('email_is_ot_valid', context), context);
+                    // }
+                    else if(authProvider.phoneController.text.trim().isEmpty){
                       showCustomSnackBar(getTranslated('phone_is_required', context), context);
                     }
                     else if(authProvider.phoneController.text.trim().length<8){
@@ -145,9 +150,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> with TickerProv
                     }else if(authProvider.passwordController.text.trim() != authProvider.confirmPasswordController.text.trim()){
                       showCustomSnackBar(getTranslated('password_is_mismatch', context), context);
                     }
-                    else if(authProvider.sellerProfileImage == null){
-                      showCustomSnackBar(getTranslated('profile_image_is_required', context), context);
-                    }
+                    // else if(authProvider.sellerProfileImage == null){
+                    //   showCustomSnackBar(getTranslated('profile_image_is_required', context), context);
+                    // }
                     else{
                       _tabController!.animateTo((_tabController!.index + 1) % 2);
                       selectedIndex = _tabController!.index + 1;
@@ -178,13 +183,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> with TickerProv
                             showCustomSnackBar(getTranslated('first_name_is_required', context), context);
                           }else if(authProvider.lastNameController.text.trim().isEmpty){
                             showCustomSnackBar(getTranslated('last_name_is_required', context), context);
+                          }else if(authProvider.isDistictSelected == false){
+                            showCustomSnackBar(getTranslated('district is required', context), context);
+                          }else if(authProvider.isUpazilaSelected == false){
+                            showCustomSnackBar(getTranslated('upazila is required', context), context);
                           }
                           // else if(authProvider.emailController.text.trim().isEmpty){
                           //   showCustomSnackBar(getTranslated('email_is_required', context), context);
                           // }
-                          else if (EmailChecker.isNotValid(authProvider.emailController.text.trim())) {
-                            showCustomSnackBar(getTranslated('email_is_ot_valid', context), context);
-                          }else if(authProvider.phoneController.text.trim().isEmpty){
+                          // else if (EmailChecker.isNotValid(authProvider.emailController.text.trim())) {
+                          //   showCustomSnackBar(getTranslated('email_is_ot_valid', context), context);
+                          // }
+                          else if(authProvider.phoneController.text.trim().isEmpty){
                             showCustomSnackBar(getTranslated('phone_is_required', context), context);
                           }
                           else if(authProvider.phoneController.text.trim().length<8){
@@ -199,23 +209,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> with TickerProv
                             showCustomSnackBar(getTranslated('confirm_password_is_required', context), context);
                           }else if(authProvider.passwordController.text.trim() != authProvider.confirmPasswordController.text.trim()){
                             showCustomSnackBar(getTranslated('password_is_mismatch', context), context);
-                          }else if(authProvider.districtId!.isEmpty){
-                            showCustomSnackBar(getTranslated('district_is_required', context), context);
-                          }else if(authProvider.upazilaId!.isEmpty){
-                            showCustomSnackBar(getTranslated('upazila_is_required', context), context);
                           }
                           else if(authProvider.shopNameController.text.trim().isEmpty){
                           showCustomSnackBar(getTranslated('shop_name_is_required', context), context);
-                          }else if(authProvider.shopAddressController.text.trim().isEmpty){
-                          showCustomSnackBar(getTranslated('shop_address_is_required', context), context);
-                          }else if(authProvider.shopLogo == null){
-                          showCustomSnackBar(getTranslated('shop_logo_is_required', context), context);
-                          }else if(authProvider.shopBanner == null){
-                          showCustomSnackBar(getTranslated('shop_banner_is_required', context), context);
-                          }else if(authProvider.secondaryBanner == null){
-                            showCustomSnackBar(getTranslated('secondary_banner_is_required', context), context);
-                          }else{
-                            print(authProvider.districtId.toString()+"---------"+authProvider.upazilaId.toString());
+                          }
+                          // else if(authProvider.shopAddressController.text.trim().isEmpty){
+                          // showCustomSnackBar(getTranslated('shop_address_is_required', context), context);
+                          // }else if(authProvider.shopLogo == null){
+                          // showCustomSnackBar(getTranslated('shop_logo_is_required', context), context);
+                          // }else if(authProvider.shopBanner == null){
+                          // showCustomSnackBar(getTranslated('shop_banner_is_required', context), context);
+                          // }else if(authProvider.secondaryBanner == null){
+                          //   showCustomSnackBar(getTranslated('secondary_banner_is_required', context), context);
+                          // }
+                          else{
+                            print("0--------0: "+authProvider.districtId.toString()+"---"+authProvider.districtId.toString());
                             RegisterModel registerModel =  RegisterModel(
                                 fName: authProvider.firstNameController.text.trim(),
                                 lName: authProvider.lastNameController.text.trim(),

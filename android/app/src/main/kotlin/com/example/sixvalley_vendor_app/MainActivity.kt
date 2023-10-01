@@ -1,4 +1,4 @@
-package com.comjagatltd.laalsobuj.seller_app
+package com.laalsobuj.seller_app
 
 import io.flutter.embedding.android.FlutterActivity
 

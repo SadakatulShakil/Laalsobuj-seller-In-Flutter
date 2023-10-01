@@ -5,7 +5,7 @@ import 'package:sixvalley_vendor_app/utill/images.dart';
 
 class AppConstants {
   static const String appName = 'LaalSobuj Seller';
-  static const String appVersion = '14.0';
+  static const String appVersion = '1.0.4';
   static const String companyName = '6Valley';
   static const String baseUrl = 'https://laalsobuj.comjagat.org';
   static const String loginUri = '/api/v3/seller/auth/login';

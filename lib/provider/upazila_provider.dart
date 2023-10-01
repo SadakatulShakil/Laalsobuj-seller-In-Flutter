@@ -21,4 +21,13 @@ class UpazilaProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Upazila? _selectedUpazilaObject;
+
+  Upazila? get selectedUpazilaObject => _selectedUpazilaObject;
+
+  void setSelectedUpazilaObject(Upazila upazila) {
+    _selectedUpazilaObject = upazila;
+    notifyListeners();
+  }
 }

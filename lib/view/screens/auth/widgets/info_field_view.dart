@@ -156,25 +156,24 @@ class _InfoFieldVIewState extends State<InfoFieldVIew> {
                         Expanded(child:
                         Consumer<DistrictProvider>(
                           builder: (context, districtProvider, _) {
-                            return DropdownButton<int>(
-                              value: selectedDistrictId,
+                            return DropdownButton<String>(
+                              value: authProvider.districtId,
                               onChanged: (value) {
                                 setState(() {
-                                  selectedDistrictId = value;
+                                  authProvider.isDistictSelected = true;
                                   authProvider.setDistrictId(value.toString());
-                                  selectedUpazila = null; // Reset selected upazila
-                                  context.read<UpazilaProvider>().fetchUpazilas(value!);
+                                  context.read<UpazilaProvider>().fetchUpazilas(int.tryParse(value ?? '')??-1);
                                 });
                               },
                               hint: Text('Select District'),
                               items: [
-                                DropdownMenuItem<int>(
+                                DropdownMenuItem<String>(
                                   value: null,
                                   child: Text('Select District'),
                                 ),
                                 ...districtProvider.districts.map((District district) {
-                                  return DropdownMenuItem<int>(
-                                    value: district.id,
+                                  return DropdownMenuItem<String>(
+                                    value: district.id.toString(),
                                     child: Text(district.district),
                                   );
                                 }),
@@ -189,11 +188,12 @@ class _InfoFieldVIewState extends State<InfoFieldVIew> {
                         Consumer<UpazilaProvider>(
                           builder: (context, upazilaProvider, _) {
                             return DropdownButton<Upazila>(
-                              value: selectedUpazila,
+                              value: upazilaProvider.selectedUpazilaObject,
                               onChanged: (value) {
                                 setState(() {
-                                  selectedUpazila = value;
-                                  authProvider.setUpazilaId(value!.id.toString());
+                                  authProvider.isUpazilaSelected = true;
+                                  upazilaProvider.setSelectedUpazilaObject(value!);
+                                  authProvider.setUpazilaId(value.id.toString());
                                 });
                               },
                               hint: Text('Select Upazila'),

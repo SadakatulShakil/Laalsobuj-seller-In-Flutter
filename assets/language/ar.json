@@ -397,6 +397,8 @@
   "shop_address": "عنوان المحل",
   "first_name_is_required": "الإسم الأول مطلوب",
   "last_name_is_required": "إسم العائلة مطلوب",
+  "district is required": "district is required",
+  "upazila is required": "upazila is required",
   "email_is_required": "البريد الالكتروني مطلوب",
   "phone_is_required": "الهاتف مطلوب",
   "phone_number_is_not_valid": "رقم الهاتف غير صالح",
